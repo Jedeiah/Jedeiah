@@ -65,7 +65,6 @@
 <rect x="528" y="176" width="12" height="12" rx="3.2" fill="#0E3A46" opacity="0"><animate attributeName="opacity" values="0;1" dur="0.45s" begin="1.485s" fill="freeze"/></rect>
 <rect x="544" y="96" width="12" height="12" rx="3.2" fill="#0E3A46" opacity="0"><animate attributeName="opacity" values="0;1" dur="0.45s" begin="1.261s" fill="freeze"/></rect>
 <rect x="592" y="176" width="12" height="12" rx="3.2" fill="#0E3A46" opacity="0"><animate attributeName="opacity" values="0;1" dur="0.45s" begin="1.613s" fill="freeze"/></rect>
-<rect x="608" y="80" width="12" height="12" rx="3.2" fill="#0E3A46" opacity="0"><animate attributeName="opacity" values="0;1" dur="0.45s" begin="1.338s" fill="freeze"/></rect>
 <rect x="608" y="112" width="12" height="12" rx="3.2" fill="#0E3A46" opacity="0"><animate attributeName="opacity" values="0;1" dur="0.45s" begin="1.44s" fill="freeze"/></rect>
 <rect x="624" y="80" width="12" height="12" rx="3.2" fill="#0E3A46" opacity="0"><animate attributeName="opacity" values="0;1" dur="0.45s" begin="1.37s" fill="freeze"/></rect>
 <rect x="640" y="176" width="12" height="12" rx="3.2" fill="#0E3A46" opacity="0"><animate attributeName="opacity" values="0;1" dur="0.45s" begin="1.709s" fill="freeze"/></rect>
@@ -86,6 +85,7 @@
 <rect x="800" y="128" width="12" height="12" rx="3.2" fill="#0E3A46" opacity="0"><animate attributeName="opacity" values="0;1" dur="0.45s" begin="1.876s" fill="freeze"/></rect>
 <rect x="800" y="144" width="12" height="12" rx="3.2" fill="#0E3A46" opacity="0"><animate attributeName="opacity" values="0;1" dur="0.45s" begin="1.927s" fill="freeze"/></rect>
 <rect x="800" y="160" width="12" height="12" rx="3.2" fill="#0E3A46" opacity="0"><animate attributeName="opacity" values="0;1" dur="0.45s" begin="1.978s" fill="freeze"/></rect>
+<rect x="816" y="96" width="12" height="12" rx="3.2" fill="#0E3A46" opacity="0"><animate attributeName="opacity" values="0;1" dur="0.45s" begin="1.805s" fill="freeze"/></rect>
 <rect x="816" y="112" width="12" height="12" rx="3.2" fill="#0E3A46" opacity="0"><animate attributeName="opacity" values="0;1" dur="0.45s" begin="1.856s" fill="freeze"/></rect>
 <rect x="816" y="128" width="12" height="12" rx="3.2" fill="#0E3A46" opacity="0"><animate attributeName="opacity" values="0;1" dur="0.45s" begin="1.908s" fill="freeze"/></rect>
 <rect x="816" y="144" width="12" height="12" rx="3.2" fill="#116E7E" opacity="0"><animate attributeName="opacity" values="0;1" dur="0.45s" begin="1.959s" fill="freeze"/></rect>
@@ -121,7 +121,7 @@
 <text x="912" y="219.5" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', 'Courier New', monospace" font-size="11" fill="#7D8794" text-anchor="end">more</text>
 <path d="M 944 56 V 216" stroke="url(#vline)" stroke-width="1" fill="none"/>
 <text x="1216" y="148" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif" font-size="60" font-weight="700"
-      fill="url(#bignum)" text-anchor="end">477</text>
+      fill="url(#bignum)" text-anchor="end">478</text>
 <text x="1216" y="178" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', 'Courier New', monospace" font-size="12.5" fill="#7D8794"
       text-anchor="end">contributions · last 12 months</text>
 <text x="64" y="42" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', 'Courier New', monospace" font-size="11.5"
