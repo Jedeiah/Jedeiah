@@ -1,2 +1,4 @@
 _preview/
 .DS_Store
+__pycache__/
+*.pyc
