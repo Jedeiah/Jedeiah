@@ -18,19 +18,6 @@
 
 <br>
 
-## Selected work
-
-| 项目 | 一句话 | 栈 |
-| :--- | :--- | :--- |
-| [**dsh-desktop**](https://github.com/Jedeiah/dsh-desktop) ★2 | DeepSeek Harness 的桌面瘦壳：不内置 dsh、首次运行自动装好，带版本管理与回滚 | `Rust` `Tauri` |
-| [**agent-critter**](https://github.com/Jedeiah/agent-critter) ★3 | Claude Code 桌面宠物插件，实时联动 AI 工作状态，兼容 Petdex 精灵库 | `Rust` |
-| [**codex-read-image**](https://github.com/Jedeiah/codex-read-image) ★3 | 让 Codex 借纯视觉模型看图：图片转 base64 调视觉 API，结果回灌主模型 | `Python` |
-| [**dsh-plugins**](https://github.com/Jedeiah/dsh-plugins) | dsh 插件集：回合提醒 / 抓取兼容 fake-ip 代理 / Chrome DevTools MCP | `JavaScript` |
-| [**audio-hud**](https://github.com/Jedeiah/audio-hud) | 外呼坐席的实时电平条与状态灯，按音频会话自动跟随在用设备 | `Rust` `WASAPI` |
-| [**navicat_premium_sinicization**](https://github.com/Jedeiah/navicat_premium_sinicization) ★20 | Navicat Premium 16 汉化包 | `Resource` |
-
-<br>
-
 ## Stack
 
 <p align="center">

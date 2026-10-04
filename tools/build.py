@@ -238,25 +238,24 @@ FRAGMENT_BUDGET = None  # generated svgs are small; no clipping needed
 
 CYCLE = 15.0          # seconds for one full role rotation
 ROLES = [
-    "agent tooling · claude-code / codex / dsh",
+    "agent tooling · claude-code / codex",
     "rust desktop · tauri / egui",
     "python automation · playwright / asyncio",
 ]
 PROMPT = "~ $ "
 NAME_X = 196
 ROLE_Y = 212
-MONO_ROLE_SIZE = 17.0
-MONO_ADVANCE = 0.6    # advance width per char, in em, for ui-monospace family
+MONO_ROLE_SIZE = 18.5
 
 
 def typing_group(role_idx: int, t: dict) -> str:
     """One role line, revealed character by character, then fading as a block."""
     slot = CYCLE / len(ROLES)
     a = role_idx * slot
-    t_start = (a + 0.35) / CYCLE
-    t_end = (a + 1.55) / CYCLE
-    hold_end = (a + slot - 0.45) / CYCLE
-    fade_end = (a + slot - 0.15) / CYCLE
+    t_start = (a + 0.20) / CYCLE
+    t_end = (a + 1.45) / CYCLE
+    hold_end = (a + slot - 0.35) / CYCLE
+    fade_end = (a + slot - 0.05) / CYCLE
 
     text = ROLES[role_idx]
     n = max(len(text), 1)
@@ -483,31 +482,13 @@ def heatmap(t: dict, data: dict) -> tuple[str, str, int]:
     return defs, "\n".join(body), grid_w
 
 
-def lang_bar(t: dict, data: dict, x: int, y: int, w: int) -> str:
-    langs = data["langs"][:3]
-    if not langs:
-        return ""
-    palette = [t["cy"], t["vi"], t["pk"]]
-    total = sum(c for _, c in langs) or 1
-    out, cx = [], x
-    for i, (_, c) in enumerate(langs):
-        seg = w * (c / total)
-        out.append(f'<rect x="{cx:.1f}" y="{y}" width="{max(seg - 4, 3):.1f}" height="6" rx="3" '
-                   f'fill="{palette[i]}"/>')
-        cx += seg
-    legend = " · ".join(f"{esc(n)} {round(c / total * 100)}%" for n, c in langs)
-    out.append(f'<text x="{x + w}" y="{y + 22}" font-family="{MONO}" font-size="10.5" '
-               f'fill="{t["muted"]}" text-anchor="end">{legend}</text>')
-    return "\n".join(out)
-
-
 def overview(theme_key: str, data: dict) -> str:
     t = THEMES[theme_key]
     h = OVERVIEW_H
     defs, grid, grid_w = heatmap(t, data)
 
     divider_x = GRID_X + grid_w + 32
-    block_l, block_r = divider_x + 26, W - 64
+    block_r = W - 64
 
     extra = (f'<linearGradient id="bignum" x1="0" y1="0" x2="1" y2="0">'
              f'<stop offset="0" stop-color="{t["cy"]}"/>'
@@ -522,15 +503,12 @@ def overview(theme_key: str, data: dict) -> str:
     svg.append(grid)
     svg.append(f'<path d="M {divider_x} 56 V 216" stroke="url(#vline)" stroke-width="1" fill="none"/>')
 
-    svg.append(f"""<text x="{block_r}" y="104" font-family="{SANS}" font-size="42" font-weight="700"
+    # The panel deliberately carries no repository counters: the profile shows
+    # direction and activity, not project inventory.
+    svg.append(f"""<text x="{block_r}" y="148" font-family="{SANS}" font-size="60" font-weight="700"
       fill="url(#bignum)" text-anchor="end">{data['total_contrib']:,}</text>
-<text x="{block_r}" y="128" font-family="{MONO}" font-size="11.5" fill="{t['muted']}"
-      text-anchor="end">contributions · last 12 months</text>
-<path d="M {block_l} 148 H {block_r}" stroke="{t['border']}" stroke-width="1" fill="none"/>
-<text x="{block_r}" y="176" font-family="{MONO}" font-size="12" fill="{t['fg']}"
-      text-anchor="end">{data['repos']} repos · {data['stars']} stars · {data['followers']} followers</text>""")
-
-    svg.append(lang_bar(t, data, block_l, 194, block_r - block_l))
+<text x="{block_r}" y="178" font-family="{MONO}" font-size="12.5" fill="{t['muted']}"
+      text-anchor="end">contributions · last 12 months</text>""")
 
     svg.append(f"""<text x="{GRID_X}" y="42" font-family="{MONO}" font-size="11.5"
       letter-spacing="2.4" fill="{t['muted']}">ACTIVITY</text>
