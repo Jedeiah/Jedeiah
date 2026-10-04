@@ -5,21 +5,8 @@
 </picture>
 
 <p align="center">
-  <sub>I build the plumbing around AI agents — the plugin layers, the local-first shells, and the network underneath.</sub>
+  <sub>Protocols, proxies, agents and the tooling that grows around them.</sub>
 </p>
-
-<br>
-
-## // about
-
-Most of what I work on sits between a language model and the machine it is supposed to
-operate: plugin protocols, tool schemas, and the harness that keeps a long agent run
-from falling over. That keeps pulling me back into the same three places — a desktop
-app that has to run without ceremony, a proxy that has to stay out of the way, and a
-browser that has to be driven like a person is using it.
-
-Rust when the resource budget matters. Python while the idea is still moving. Java when
-the JVM is genuinely the right answer.
 
 <br>
 

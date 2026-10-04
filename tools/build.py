@@ -328,8 +328,8 @@ def banner(theme: str) -> str:
     svg.append(glitch_name(t))
     svg.append(typing_line(t))
     svg.append(f'<text x="{TYPE_X}" y="256" font-family="{SANS}" font-size="16.5" '
-               f'fill="{t["muted"]}">agent tooling&#160;&#160;·&#160;&#160;desktop apps'
-               f'&#160;&#160;·&#160;&#160;network plumbing</text>')
+               f'fill="{t["muted"]}">protocols&#160;&#160;·&#160;&#160;proxies'
+               f'&#160;&#160;·&#160;&#160;agents&#160;&#160;·&#160;&#160;automation</text>')
 
     svg.append(f'<path d="M 706 88 V 296" stroke="{t["border"]}" stroke-width="1" fill="none"/>')
     svg.append(monitor(t))
