@@ -286,14 +286,14 @@ def monitor(t: dict) -> str:
     """Neon level meters, one per focus area."""
     x, bar_x, bar_w = 742, 900, 320
     rows = []
-    rows.append(f'<text x="{x}" y="112" font-family="{MONO}" font-size="12.5" '
+    rows.append(f'<text x="{x}" y="112" font-family="{MONO}" font-size="13" '
                 f'letter-spacing="2.6" fill="{t["muted"]}">// FOCUS</text>')
     for i, label in enumerate(FOCUS):
         y = 148 + i * 30
         pulses = [0.62, 0.86, 0.74, 0.95, 0.68, 0.90, 0.62]
         vals = ";".join(f"{bar_w * pulses[(i * 2 + k) % len(pulses)]:.0f}" for k in range(len(pulses)))
         rows.append(
-            f'<text x="{x}" y="{y + 10}" font-family="{MONO}" font-size="13.5" '
+            f'<text x="{x}" y="{y + 10}" font-family="{MONO}" font-size="14.5" '
             f'fill="{t["cyan"]}" letter-spacing="1.4">{label}</text>'
             f'<rect x="{bar_x}" y="{y + 2}" width="{bar_w}" height="7" rx="3.5" '
             f'fill="{t["grid"]}"/>'
@@ -319,15 +319,15 @@ def banner(theme: str) -> str:
     for i, tone in enumerate(("magenta", "amber", "cyan")):
         svg.append(f'<circle cx="{26 + i * 21}" cy="19" r="4.6" fill="{t[tone]}" '
                    f'opacity="0.85"/>')
-    svg.append(f'<text x="{110}" y="24" font-family="{MONO}" font-size="12.5" '
+    svg.append(f'<text x="{110}" y="24" font-family="{MONO}" font-size="13" '
                f'fill="{t["muted"]}">jedeiah@github&#160;—&#160;~</text>')
-    svg.append(f'<text x="{W - 26}" y="24" font-family="{MONO}" font-size="12.5" '
+    svg.append(f'<text x="{W - 26}" y="24" font-family="{MONO}" font-size="13" '
                f'fill="{t["dim"]}" text-anchor="end">zsh</text>')
     svg.append('</g>')
 
     svg.append(glitch_name(t))
     svg.append(typing_line(t))
-    svg.append(f'<text x="{TYPE_X}" y="256" font-family="{SANS}" font-size="15.5" '
+    svg.append(f'<text x="{TYPE_X}" y="256" font-family="{SANS}" font-size="16.5" '
                f'fill="{t["muted"]}">agent tooling&#160;&#160;·&#160;&#160;desktop apps'
                f'&#160;&#160;·&#160;&#160;network plumbing</text>')
 
@@ -336,7 +336,7 @@ def banner(theme: str) -> str:
 
     # terminal status bar, the way a real prompt would close out
     svg.append(f'<path d="M 0 308 H {W}" stroke="{t["border"]}" stroke-width="1" fill="none"/>'
-               f'<text x="{TYPE_X}" y="332" font-family="{MONO}" font-size="12" '
+               f'<text x="{TYPE_X}" y="332" font-family="{MONO}" font-size="13" '
                f'fill="{t["dim"]}">~/profile&#160;&#160;&#160;main</text>'
                f'<text x="{W - 26}" y="332" font-family="{MONO}" font-size="12" '
                f'fill="{t["dim"]}" text-anchor="end">UTF-8&#160;&#160;·&#160;&#160;LF'
@@ -357,7 +357,7 @@ STACK_ROWS = [
 ]
 
 CHIP_H, CHIP_GAP, CHIP_PAD, ICON = 40, 14, 16, 18
-LABEL_SIZE, LABEL_ADV = 14.5, 0.6
+LABEL_SIZE, LABEL_ADV = 15.0, 0.6
 
 
 def chip_width(label: str) -> float:
@@ -395,7 +395,7 @@ def stack(theme: str, icons: dict) -> str:
                   f'fill="{t["ink"]}">{label}</text>'
             )
             x += cw + CHIP_GAP
-    svg.append(f'<text x="{W / 2}" y="152" font-family="{MONO}" font-size="12.5" '
+    svg.append(f'<text x="{W / 2}" y="152" font-family="{MONO}" font-size="13" '
                f'fill="{t["muted"]}" text-anchor="middle" letter-spacing="1.6">'
                f'AI / LLM&#160;integration&#160;&#160;·&#160;&#160;browser automation'
                f'&#160;&#160;·&#160;&#160;network &amp; proxies'
@@ -451,7 +451,7 @@ def heatmap(t: dict, data: dict) -> tuple[str, str, float]:
             if x - last_x >= PITCH * 3:
                 last_x = x
                 body.append(f'<text x="{x}" y="{GRID_Y - 12}" font-family="{MONO}" '
-                            f'font-size="11.5" fill="{t["muted"]}">{d.strftime("%b")}</text>')
+                            f'font-size="12" fill="{t["muted"]}">{d.strftime("%b")}</text>')
 
     lit, halos = [], []
     for wi, wk in enumerate(weeks):
@@ -480,7 +480,7 @@ def heatmap(t: dict, data: dict) -> tuple[str, str, float]:
     for i, label in enumerate(WEEKDAYS):
         if label:
             body.append(f'<text x="{GRID_X - 10}" y="{GRID_Y + i * PITCH + 9.5}" '
-                        f'font-family="{MONO}" font-size="11" fill="{t["muted"]}" '
+                        f'font-family="{MONO}" font-size="11.5" fill="{t["muted"]}" '
                         f'text-anchor="end">{label}</text>')
 
     # sweeping scan beam, clipped to the grid
@@ -530,9 +530,9 @@ def scope_trace(t: dict, data: dict, x: float, w: float) -> str:
         f'stroke-dashoffset="{length}">'
         f'<animate attributeName="stroke-dashoffset" from="{length}" to="0" dur="2.8s" '
         f'fill="freeze"/></polyline>'
-        f'<text x="{x}" y="{SCOPE_Y - 6}" font-family="{MONO}" font-size="11" '
+        f'<text x="{x}" y="{SCOPE_Y - 6}" font-family="{MONO}" font-size="11.5" '
         f'fill="{t["dim"]}" letter-spacing="1.8">DAILY&#160;VOLUME</text>'
-        f'<text x="{x + w}" y="{SCOPE_Y - 6}" font-family="{MONO}" font-size="11" '
+        f'<text x="{x + w}" y="{SCOPE_Y - 6}" font-family="{MONO}" font-size="11.5" '
         f'fill="{t["dim"]}" text-anchor="end" letter-spacing="1.2">MAX&#160;{peak}</text>'
     )
 
@@ -561,15 +561,15 @@ def activity(theme: str, data: dict) -> str:
     newest = max((d for wk in data["weeks"] for d in wk), key=lambda d: d["n"], default=None)
     svg.append(f"""<text x="{block_r}" y="170" font-family="{MONO}" font-size="66" font-weight="700"
       fill="url(#neon)" text-anchor="end">{data['total_contrib']:,}</text>
-<text x="{block_r}" y="196" font-family="{MONO}" font-size="12.5" fill="{t['muted']}"
+<text x="{block_r}" y="196" font-family="{MONO}" font-size="13" fill="{t['muted']}"
       text-anchor="end" letter-spacing="1.4">CONTRIBUTIONS / 12 MO</text>
 <path d="M {divider_x + 26} 220 H {block_r}" stroke="{t['border']}" stroke-width="1" fill="none"/>
-<text x="{block_r}" y="248" font-family="{MONO}" font-size="12.5" fill="{t['dim']}"
+<text x="{block_r}" y="248" font-family="{MONO}" font-size="13" fill="{t['dim']}"
       text-anchor="end" letter-spacing="1.2">PEAK DAY</text>
-<text x="{block_r}" y="272" font-family="{MONO}" font-size="15" fill="{t['cyan']}"
+<text x="{block_r}" y="272" font-family="{MONO}" font-size="15.5" fill="{t['cyan']}"
       text-anchor="end">{newest['n'] if newest else 0} commits · {newest['d'] if newest else '—'}</text>""")
 
-    svg.append(f"""<text x="{GRID_X}" y="48" font-family="{MONO}" font-size="12.5"
+    svg.append(f"""<text x="{GRID_X}" y="48" font-family="{MONO}" font-size="13"
       letter-spacing="2.6" fill="{t['muted']}">// ACTIVITY</text>
 <circle cx="{GRID_X + 132}" cy="44" r="4" fill="{t['magenta']}">
   <animate attributeName="opacity" dur="1.6s" repeatCount="indefinite" values="1;0.15;1"/>
