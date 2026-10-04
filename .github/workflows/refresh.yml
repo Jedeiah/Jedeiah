@@ -1,0 +1,48 @@
+name: refresh profile assets
+
+on:
+  schedule:
+    - cron: "17 3 * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "tools/**"
+      - ".github/workflows/refresh.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh-profile-assets
+  cancel-in-progress: true
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # tools/build.py shells out to `gh`, which is preinstalled on runners and
+      # picks the token up from GH_TOKEN.
+      - name: Render SVG assets
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 tools/build.py
+
+      - name: Commit if anything moved
+        run: |
+          set -euo pipefail
+          if git diff --quiet -- assets data; then
+            echo "assets already current"
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets data
+          git commit -m "chore: refresh profile assets"
+          git push
