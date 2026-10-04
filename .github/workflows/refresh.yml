@@ -37,12 +37,18 @@ jobs:
       - name: Commit if anything moved
         run: |
           set -euo pipefail
-          if git diff --quiet -- assets data; then
+          # Align with the remote before committing.  assets/ and data/ are
+          # generated, so the freshly rendered tree is the source of truth and
+          # any remote copy of those files is discarded rather than merged —
+          # this is what keeps the daily run from colliding with local edits.
+          git fetch --quiet origin main
+          git reset --mixed --quiet origin/main
+          git add assets data
+          if git diff --cached --quiet; then
             echo "assets already current"
             exit 0
           fi
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add assets data
           git commit -m "chore: refresh profile assets"
-          git push
+          git push origin HEAD:main
