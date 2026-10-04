@@ -65,7 +65,6 @@
 <rect x="528" y="176" width="12" height="12" rx="3.2" fill="#C3E9F3" opacity="0"><animate attributeName="opacity" values="0;1" dur="0.45s" begin="1.485s" fill="freeze"/></rect>
 <rect x="544" y="96" width="12" height="12" rx="3.2" fill="#C3E9F3" opacity="0"><animate attributeName="opacity" values="0;1" dur="0.45s" begin="1.261s" fill="freeze"/></rect>
 <rect x="592" y="176" width="12" height="12" rx="3.2" fill="#C3E9F3" opacity="0"><animate attributeName="opacity" values="0;1" dur="0.45s" begin="1.613s" fill="freeze"/></rect>
-<rect x="608" y="80" width="12" height="12" rx="3.2" fill="#C3E9F3" opacity="0"><animate attributeName="opacity" values="0;1" dur="0.45s" begin="1.338s" fill="freeze"/></rect>
 <rect x="608" y="112" width="12" height="12" rx="3.2" fill="#C3E9F3" opacity="0"><animate attributeName="opacity" values="0;1" dur="0.45s" begin="1.44s" fill="freeze"/></rect>
 <rect x="624" y="80" width="12" height="12" rx="3.2" fill="#C3E9F3" opacity="0"><animate attributeName="opacity" values="0;1" dur="0.45s" begin="1.37s" fill="freeze"/></rect>
 <rect x="640" y="176" width="12" height="12" rx="3.2" fill="#C3E9F3" opacity="0"><animate attributeName="opacity" values="0;1" dur="0.45s" begin="1.709s" fill="freeze"/></rect>
@@ -86,6 +85,7 @@
 <rect x="800" y="128" width="12" height="12" rx="3.2" fill="#C3E9F3" opacity="0"><animate attributeName="opacity" values="0;1" dur="0.45s" begin="1.876s" fill="freeze"/></rect>
 <rect x="800" y="144" width="12" height="12" rx="3.2" fill="#C3E9F3" opacity="0"><animate attributeName="opacity" values="0;1" dur="0.45s" begin="1.927s" fill="freeze"/></rect>
 <rect x="800" y="160" width="12" height="12" rx="3.2" fill="#C3E9F3" opacity="0"><animate attributeName="opacity" values="0;1" dur="0.45s" begin="1.978s" fill="freeze"/></rect>
+<rect x="816" y="96" width="12" height="12" rx="3.2" fill="#C3E9F3" opacity="0"><animate attributeName="opacity" values="0;1" dur="0.45s" begin="1.805s" fill="freeze"/></rect>
 <rect x="816" y="112" width="12" height="12" rx="3.2" fill="#C3E9F3" opacity="0"><animate attributeName="opacity" values="0;1" dur="0.45s" begin="1.856s" fill="freeze"/></rect>
 <rect x="816" y="128" width="12" height="12" rx="3.2" fill="#C3E9F3" opacity="0"><animate attributeName="opacity" values="0;1" dur="0.45s" begin="1.908s" fill="freeze"/></rect>
 <rect x="816" y="144" width="12" height="12" rx="3.2" fill="#7FD3E6" opacity="0"><animate attributeName="opacity" values="0;1" dur="0.45s" begin="1.959s" fill="freeze"/></rect>
@@ -121,16 +121,16 @@
 <text x="912" y="219.5" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', 'Courier New', monospace" font-size="11" fill="#59636E" text-anchor="end">more</text>
 <path d="M 944 56 V 216" stroke="url(#vline)" stroke-width="1" fill="none"/>
 <text x="1216" y="104" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif" font-size="42" font-weight="700"
-      fill="url(#bignum)" text-anchor="end">475</text>
+      fill="url(#bignum)" text-anchor="end">477</text>
 <text x="1216" y="128" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', 'Courier New', monospace" font-size="11.5" fill="#59636E"
       text-anchor="end">contributions · last 12 months</text>
 <path d="M 970 148 H 1216" stroke="#D8DEE6" stroke-width="1" fill="none"/>
 <text x="1216" y="176" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', 'Courier New', monospace" font-size="12" fill="#1F2328"
-      text-anchor="end">8 repos · 28 stars · 3 followers</text>
-<rect x="970.0" y="194" width="119.0" height="6" rx="3" fill="#0891B2"/>
-<rect x="1093.0" y="194" width="78.0" height="6" rx="3" fill="#7C3AED"/>
-<rect x="1175.0" y="194" width="37.0" height="6" rx="3" fill="#DB2777"/>
-<text x="1216" y="216" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', 'Courier New', monospace" font-size="10.5" fill="#59636E" text-anchor="end">Rust 50% · Python 33% · JavaScript 17%</text>
+      text-anchor="end">9 repos · 28 stars · 3 followers</text>
+<rect x="970.0" y="194" width="101.4" height="6" rx="3" fill="#0891B2"/>
+<rect x="1075.4" y="194" width="101.4" height="6" rx="3" fill="#7C3AED"/>
+<rect x="1180.9" y="194" width="31.1" height="6" rx="3" fill="#DB2777"/>
+<text x="1216" y="216" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', 'Courier New', monospace" font-size="10.5" fill="#59636E" text-anchor="end">Python 43% · Rust 43% · JavaScript 14%</text>
 <text x="64" y="42" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', 'Courier New', monospace" font-size="11.5"
       letter-spacing="2.4" fill="#59636E">ACTIVITY</text>
 <text x="1216" y="42" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', 'Courier New', monospace" font-size="11.5" fill="#AFB8C1"
