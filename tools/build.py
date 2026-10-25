@@ -94,6 +94,35 @@ LIGHT = {
 
 THEMES = {"dark": DARK, "light": LIGHT}
 
+# Editorial palette: the same keys, flattened to paper + a single warm accent.
+# Everything that used to glow is now ink; the heatmap becomes a neutral ramp.
+def _paper(base: dict) -> dict:
+    p = dict(base)
+    if base["key"] == "light":
+        p.update({
+            "panel": "#FDFDFC", "inset": "#F7F5F0", "border": "#E3E0D8",
+            "grid": "#F0EEE8", "ink": "#141414", "ink_hi": "#0A0A0A",
+            "muted": "#8A8580", "dim": "#B8B3AC",
+            "cyan": "#9A3412", "magenta": "#9A3412", "accent": "#9A3412",
+            "cell0": "#F0EEE8",
+            "cells": ["#E4DFD6", "#CDBFAC", "#A8845F", "#7A4A2B"],
+            "scan_op": 0.0, "glow_op": 0.0, "beam_op": 0.0,
+        })
+    else:
+        p.update({
+            "panel": "#0B0F14", "inset": "#121820", "border": "#1E2836",
+            "grid": "#141B24", "ink": "#E8EDF3", "ink_hi": "#F7FAFD",
+            "muted": "#8B98A8", "dim": "#55616F",
+            "cyan": "#FF8A5B", "magenta": "#FF8A5B", "accent": "#FF8A5B",
+            "cell0": "#141B24",
+            "cells": ["#1B2532", "#2C3D50", "#4A6A86", "#7FA6C4"],
+            "scan_op": 0.0, "glow_op": 0.0, "beam_op": 0.0,
+        })
+    return p
+
+
+PAPER = {k: _paper(v) for k, v in THEMES.items()}
+
 
 def esc(s: str) -> str:
     return html.escape(str(s), quote=True)
@@ -199,6 +228,29 @@ def chrome(t: dict, h: int, extra: str = "") -> str:
          for x, y, dx, dy in ((1, 1, 1, 1), (W - 1, 1, -1, 1),
                               (1, h - 1, 1, -1), (W - 1, h - 1, -1, -1)))}
 <rect x="0" y="{h - 2.5}" width="{W}" height="1.5" fill="url(#hair)"/>
+"""
+
+
+def chrome_flat(t: dict, h: int, extra: str = "") -> str:
+    """Editorial shell: paper ground, hairline frame. No brackets, no scanlines."""
+    return f"""<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{h}" viewBox="0 0 {W} {h}" role="img">
+<defs>
+<clipPath id="card"><rect width="{W}" height="{h}" rx="{RADIUS}"/></clipPath>
+<linearGradient id="neon" x1="0" y1="0" x2="1" y2="0">
+  <stop offset="0" stop-color="{t['cyan']}"/>
+  <stop offset="1" stop-color="{t['magenta']}"/>
+</linearGradient>
+<linearGradient id="hair" x1="0" y1="0" x2="1" y2="0">
+  <stop offset="0" stop-color="{t['border']}"/>
+  <stop offset="1" stop-color="{t['border']}"/>
+</linearGradient>
+{extra}
+</defs>
+<g clip-path="url(#card)">
+<rect width="{W}" height="{h}" fill="{t['panel']}"/>
+</g>
+<rect x="0.5" y="0.5" width="{W - 1}" height="{h - 1}" rx="{RADIUS}" fill="none"
+      stroke="{t['border']}" stroke-width="1"/>
 """
 
 
@@ -309,38 +361,28 @@ def monitor(t: dict) -> str:
 
 
 def banner(theme: str) -> str:
-    t = THEMES[theme]
-    h = 352
-    svg = [chrome(t, h)]
-    svg.append(f'<g clip-path="url(#card)">')
-    # title bar
-    svg.append(f'<rect width="{W}" height="38" fill="{t["inset"]}" opacity="0.7"/>'
-               f'<path d="M 0 38 H {W}" stroke="{t["border"]}" stroke-width="1" fill="none"/>')
-    for i, tone in enumerate(("magenta", "amber", "cyan")):
-        svg.append(f'<circle cx="{26 + i * 21}" cy="19" r="4.6" fill="{t[tone]}" '
-                   f'opacity="0.85"/>')
-    svg.append(f'<text x="{110}" y="24" font-family="{MONO}" font-size="13" '
-               f'fill="{t["muted"]}">jedeiah@github&#160;—&#160;~</text>')
-    svg.append(f'<text x="{W - 26}" y="24" font-family="{MONO}" font-size="13" '
-               f'fill="{t["dim"]}" text-anchor="end">zsh</text>')
-    svg.append('</g>')
+    """Masthead: one wordmark, one rule, three columns of facts."""
+    t = PAPER[theme]
+    h = 232
+    svg = [chrome_flat(t, h)]
 
-    svg.append(glitch_name(t))
-    svg.append(typing_line(t))
-    svg.append(f'<text x="{TYPE_X}" y="256" font-family="{SANS}" font-size="16.5" '
-               f'fill="{t["muted"]}">protocols&#160;&#160;·&#160;&#160;proxies'
-               f'&#160;&#160;·&#160;&#160;agents&#160;&#160;·&#160;&#160;automation</text>')
+    svg.append(f'<text x="0" y="92" font-family="{SANS}" font-size="92" '
+               f'font-weight="700" letter-spacing="-3.4" fill="{t["ink"]}">Jedeiah</text>')
+    svg.append(f'<rect x="0" y="120" width="{W}" height="1" fill="{t["border"]}"/>'
+               f'<rect x="0" y="119" width="96" height="3" fill="{t["accent"]}"/>')
 
-    svg.append(f'<path d="M 706 88 V 296" stroke="{t["border"]}" stroke-width="1" fill="none"/>')
-    svg.append(monitor(t))
+    cols = (
+        ("FOCUS", "agent tooling &#183; network plumbing"),
+        ("STACK", "rust &#183; typescript &#183; python"),
+        ("ON GITHUB", "since 2018"),
+    )
+    for i, (label, value) in enumerate(cols):
+        x = i * 440
+        svg.append(f'<text x="{x}" y="152" font-family="{MONO}" font-size="12" '
+                   f'letter-spacing="2.4" fill="{t["muted"]}">{label}</text>')
+        svg.append(f'<text x="{x}" y="178" font-family="{SANS}" font-size="16" '
+                   f'fill="{t["ink"]}">{value}</text>')
 
-    # terminal status bar, the way a real prompt would close out
-    svg.append(f'<path d="M 0 308 H {W}" stroke="{t["border"]}" stroke-width="1" fill="none"/>'
-               f'<text x="{TYPE_X}" y="332" font-family="{MONO}" font-size="13" '
-               f'fill="{t["dim"]}">~/profile&#160;&#160;&#160;main</text>'
-               f'<text x="{W - 26}" y="332" font-family="{MONO}" font-size="12" '
-               f'fill="{t["dim"]}" text-anchor="end">UTF-8&#160;&#160;·&#160;&#160;LF'
-               f'&#160;&#160;·&#160;&#160;100%</text>')
     svg.append("</svg>")
     return "\n".join(svg)
 
@@ -374,9 +416,9 @@ def icon_markup(icons: dict, slug: str, x: float, y: float, tone: str) -> str:
 
 
 def stack(theme: str, icons: dict) -> str:
-    t = THEMES[theme]
+    t = PAPER[theme]
     h = 168
-    svg = [chrome(t, h)]
+    svg = [chrome_flat(t, h)]
     top = 30
     for r, row in enumerate(STACK_ROWS):
         widths = [chip_width(lbl) for _, lbl in row]
@@ -387,9 +429,7 @@ def stack(theme: str, icons: dict) -> str:
             svg.append(
                 f'<rect x="{x:.1f}" y="{y}" width="{cw:.1f}" height="{CHIP_H}" rx="9" '
                 f'fill="{t["inset"]}" stroke="{t["border"]}" stroke-width="1"/>'
-                f'<rect x="{x:.1f}" y="{y}" width="3" height="{CHIP_H}" rx="1.5" '
-                f'fill="{t["cyan"]}" opacity="0.75"/>'
-                + icon_markup(icons, slug, x + CHIP_PAD, y + (CHIP_H - ICON) / 2, t["cyan"])
+                + icon_markup(icons, slug, x + CHIP_PAD, y + (CHIP_H - ICON) / 2, t["ink"])
                 + f'<text x="{x + CHIP_PAD + ICON + 10:.1f}" y="{y + 25.5}" '
                   f'font-family="{MONO}" font-size="{LABEL_SIZE}" letter-spacing="1.2" '
                   f'fill="{t["ink"]}">{label}</text>'
@@ -538,7 +578,7 @@ def scope_trace(t: dict, data: dict, x: float, w: float) -> str:
 
 
 def activity(theme: str, data: dict) -> str:
-    t = THEMES[theme]
+    t = PAPER[theme]
     h = 330
     defs, grid, grid_w = heatmap(t, data)
 
@@ -554,28 +594,23 @@ def activity(theme: str, data: dict) -> str:
         f'<stop offset="0" stop-color="{t["cyan"]}" stop-opacity="0.34"/>'
         f'<stop offset="1" stop-color="{t["cyan"]}" stop-opacity="0.02"/></linearGradient>')
 
-    svg = [chrome(t, h, extra), grid]
+    svg = [chrome_flat(t, h, extra), grid]
     svg.append(scope_trace(t, data, GRID_X, grid_w))
     svg.append(f'<path d="M {divider_x} 72 V 288" stroke="url(#vline)" stroke-width="1" fill="none"/>')
 
     newest = max((d for wk in data["weeks"] for d in wk), key=lambda d: d["n"], default=None)
     svg.append(f"""<text x="{block_r}" y="170" font-family="{MONO}" font-size="66" font-weight="700"
-      fill="url(#neon)" text-anchor="end">{data['total_contrib']:,}</text>
+      fill="{t['ink']}" text-anchor="end">{data['total_contrib']:,}</text>
 <text x="{block_r}" y="196" font-family="{MONO}" font-size="13" fill="{t['muted']}"
       text-anchor="end" letter-spacing="1.4">CONTRIBUTIONS / 12 MO</text>
 <path d="M {divider_x + 26} 220 H {block_r}" stroke="{t['border']}" stroke-width="1" fill="none"/>
 <text x="{block_r}" y="248" font-family="{MONO}" font-size="13" fill="{t['dim']}"
       text-anchor="end" letter-spacing="1.2">PEAK DAY</text>
-<text x="{block_r}" y="272" font-family="{MONO}" font-size="15.5" fill="{t['cyan']}"
+<text x="{block_r}" y="272" font-family="{MONO}" font-size="15.5" fill="{t['ink']}"
       text-anchor="end">{newest['n'] if newest else 0} commits · {newest['d'] if newest else '—'}</text>""")
 
     svg.append(f"""<text x="{GRID_X}" y="48" font-family="{MONO}" font-size="13"
-      letter-spacing="2.6" fill="{t['muted']}">// ACTIVITY</text>
-<circle cx="{GRID_X + 132}" cy="44" r="4" fill="{t['magenta']}">
-  <animate attributeName="opacity" dur="1.6s" repeatCount="indefinite" values="1;0.15;1"/>
-</circle>
-<text x="{GRID_X + 144}" y="48" font-family="{MONO}" font-size="11.5" fill="{t['dim']}"
-      letter-spacing="1.6">LIVE</text>
+      letter-spacing="2.6" fill="{t['muted']}">ACTIVITY</text>
 <text x="{block_r}" y="48" font-family="{MONO}" font-size="11.5" fill="{t['dim']}"
       text-anchor="end">updated {data['fetched']}</text>""")
 
