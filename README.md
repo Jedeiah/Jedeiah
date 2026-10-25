@@ -21,12 +21,4 @@
   <img src="assets/stack-light.svg" width="100%" alt="Languages and platforms: Rust, Python, TypeScript, JavaScript, Go, Java, Tauri, React, Vue, PostgreSQL, SQLite, Redis">
 </picture>
 
-## Activity
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/activity-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="assets/activity-light.svg">
-  <img src="assets/activity-light.svg" width="100%" alt="Contribution activity for the last twelve months">
-</picture>
-
-<sub>Every graphic on this page is an SVG rendered inside this repo by a scheduled Action — no third-party stat cards.</sub>
+<sub>Every graphic on this page is an SVG rendered inside this repo by a scheduled Action — no third-party stat cards. Contribution history is GitHub's own, right below.</sub>
