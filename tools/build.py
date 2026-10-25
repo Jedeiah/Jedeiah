@@ -102,7 +102,7 @@ def _paper(base: dict) -> dict:
         p.update({
             "panel": "#FDFDFC", "inset": "#F7F5F0", "border": "#E3E0D8",
             "grid": "#F0EEE8", "ink": "#141414", "ink_hi": "#0A0A0A",
-            "muted": "#8A8580", "dim": "#B8B3AC",
+            "muted": "#6B6560", "dim": "#A9A29A",
             "cyan": "#9A3412", "magenta": "#9A3412", "accent": "#9A3412",
             "cell0": "#F0EEE8",
             "cells": ["#E4DFD6", "#CDBFAC", "#A8845F", "#7A4A2B"],
@@ -364,7 +364,8 @@ def banner(theme: str) -> str:
     """Masthead: one wordmark, one rule, three columns of facts."""
     t = PAPER[theme]
     h = 232
-    svg = [chrome_flat(t, h)]
+    svg = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{h}" '
+           f'viewBox="0 0 {W} {h}" role="img">']
 
     svg.append(f'<text x="0" y="92" font-family="{SANS}" font-size="92" '
                f'font-weight="700" letter-spacing="-3.4" fill="{t["ink"]}">Jedeiah</text>')

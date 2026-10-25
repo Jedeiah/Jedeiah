@@ -1,28 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1280" height="232" viewBox="0 0 1280 232" role="img">
-<defs>
-<clipPath id="card"><rect width="1280" height="232" rx="14"/></clipPath>
-<linearGradient id="neon" x1="0" y1="0" x2="1" y2="0">
-  <stop offset="0" stop-color="#9A3412"/>
-  <stop offset="1" stop-color="#9A3412"/>
-</linearGradient>
-<linearGradient id="hair" x1="0" y1="0" x2="1" y2="0">
-  <stop offset="0" stop-color="#E3E0D8"/>
-  <stop offset="1" stop-color="#E3E0D8"/>
-</linearGradient>
-
-</defs>
-<g clip-path="url(#card)">
-<rect width="1280" height="232" fill="#FDFDFC"/>
-</g>
-<rect x="0.5" y="0.5" width="1279" height="231" rx="14" fill="none"
-      stroke="#E3E0D8" stroke-width="1"/>
-
 <text x="0" y="92" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="92" font-weight="700" letter-spacing="-3.4" fill="#141414">Jedeiah</text>
 <rect x="0" y="120" width="1280" height="1" fill="#E3E0D8"/><rect x="0" y="119" width="96" height="3" fill="#9A3412"/>
-<text x="0" y="152" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', 'Courier New', monospace" font-size="12" letter-spacing="2.4" fill="#8A8580">FOCUS</text>
+<text x="0" y="152" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', 'Courier New', monospace" font-size="12" letter-spacing="2.4" fill="#6B6560">FOCUS</text>
 <text x="0" y="178" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="16" fill="#141414">agent tooling &#183; network plumbing</text>
-<text x="440" y="152" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', 'Courier New', monospace" font-size="12" letter-spacing="2.4" fill="#8A8580">STACK</text>
+<text x="440" y="152" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', 'Courier New', monospace" font-size="12" letter-spacing="2.4" fill="#6B6560">STACK</text>
 <text x="440" y="178" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="16" fill="#141414">rust &#183; typescript &#183; python</text>
-<text x="880" y="152" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', 'Courier New', monospace" font-size="12" letter-spacing="2.4" fill="#8A8580">ON GITHUB</text>
+<text x="880" y="152" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', 'Courier New', monospace" font-size="12" letter-spacing="2.4" fill="#6B6560">ON GITHUB</text>
 <text x="880" y="178" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="16" fill="#141414">since 2018</text>
 </svg>
